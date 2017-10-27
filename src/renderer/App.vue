@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <div class="login-header">
-      <img src="./assets/images/login_logo.png">
+    <div class="login-header" style="-webkit-app-region: drag;">
+      <img src="./assets/images/login_logo.png" class="login-header-logo">
     </div>
     <router-view></router-view>
   </div>
@@ -19,8 +19,11 @@
   }
   .login-header {
     height: 118px;
-    line-height: 118px;
+    line-height: 135px;
     text-align: center;
     background: url("./assets/images/login_bg.png") repeat-x;
+  }
+  .login-header-logo {
+    height: 38px;
   }
 </style>

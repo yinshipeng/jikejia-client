@@ -14,10 +14,11 @@
     "pack": "npm run pack:main && npm run pack:renderer",
     "pack:main": "cross-env NODE_ENV=production webpack --progress --colors --config .electron-vue/webpack.main.config.js",
     "pack:renderer": "cross-env NODE_ENV=production webpack --progress --colors --config .electron-vue/webpack.renderer.config.js",
-    "postinstall": ""
+    "postinstall": "",
+    "install:win": "node .electron-vue/install-win.js"
   },
   "build": {
-    "productName": "jikejia-client",
+    "productName": "集客家",
     "appId": "org.simulatedgreg.electron-vue",
     "directories": {
       "output": "build"
@@ -41,10 +42,10 @@
       ]
     },
     "mac": {
-      "icon": "build/icons/icon.icns"
+      "icon": "build/icons/jkj.icns"
     },
     "win": {
-      "icon": "build/icons/icon.ico"
+      "icon": "build/icons/jkj.ico"
     },
     "linux": {
       "icon": "build/icons"
@@ -79,6 +80,7 @@
     "electron-builder": "^19.19.1",
     "electron-debug": "^1.4.0",
     "electron-devtools-installer": "^2.2.0",
+    "electron-winstaller": "^2.6.3",
     "extract-text-webpack-plugin": "^3.0.0",
     "file-loader": "^0.11.2",
     "html-webpack-plugin": "^2.30.1",

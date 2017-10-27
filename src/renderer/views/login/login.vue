@@ -23,6 +23,7 @@
                     <el-button type="text" class="forget-password" @click="handleForgetPassword">忘记密码</el-button>
                     <el-button type="primary" @click="handleSubmit">{{buttonText}}</el-button>
                 </el-form-item>
+                <input @click="handleSubmit" style="position: absolute;top:-100px;"/>
             </el-form>
         </div>
         <div class="login-footer" v-show="errMessage">
@@ -81,7 +82,7 @@
                 this.loginForm.company_id = item.company_id + ''
             },
             handleForgetPassword(){
-                open('http://www.baidu.com')
+                open('http://jikejia.cn/enterpriseAccount/toResetPassWord')
             },
             handleSubmit(){
                 if(this.buttonDisabled){
@@ -121,11 +122,16 @@
 </script>
 <style lang="scss" scoped>
     .login {
-
+    overflow:hidden;
     .login-form {
         width: 253px;
-        margin: 14px auto 0;
-
+        margin: 8px auto 0;
+    .el-form-item:nth-of-type(3) {
+        margin-bottom: 0;
+    }
+    .el-form-item:nth-of-type(4) {
+        margin-bottom: 10px;
+    }
     .el-form-item {
         width: 253px;
         margin-bottom: 20px;
@@ -138,7 +144,8 @@
         margin-left: 0;
     }
     .forget-password {
-        margin-left: 97px;
+        width: 47px;
+        margin-left: 205px;
         font-family: PingFangSC-Regular;
         font-size: 12px;
         color: #00A9F1;

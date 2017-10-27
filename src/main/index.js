@@ -24,9 +24,7 @@ function createWindow () {
       movable:true,
       fullscreenable:false,
       titleBarStyle:'hidden-inset',
-      resizable: false, //是否可以改变窗口size，默认为 true
-      frame: true,//指定 false 来创建一个 Frameless Window. 默认为 true
-      icon:'/Users/yinshipeng/Documents/workspace/github/my-electron-vue/src/renderer/assets/images/login_logo.png',//窗口图标, 如果不设置，窗口将使用可用的默认图标
+      resizable: false
   })
 
   mainWindow.loadURL(winURL)
