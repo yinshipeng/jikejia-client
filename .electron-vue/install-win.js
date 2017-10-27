@@ -20,6 +20,6 @@ function getInstallerConfig () {
     outputDirectory: path.join(outPath, 'windows-installer'),
     exe: 'jikejia.exe',
     setupExe: 'jikejiaInstaller.exe',
-    setupIcon: path.join(rootPath, 'icon.ico')
+    setupIcon: path.join(rootPath, '/build/icons/jkj.ico')
   })
 }
