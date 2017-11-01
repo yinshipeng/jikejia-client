@@ -14,7 +14,7 @@ export const queryByCompanyName = function(company_name){
 }
 
 /**
- * 登陆接口
+ * 登录接口
  * @param param
  * @returns {*}
  */

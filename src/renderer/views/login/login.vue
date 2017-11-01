@@ -66,7 +66,7 @@
         },
         computed: {
             buttonText: function () {
-                return this.buttonDisabled ? '登 陆' : '登录中……'
+                return this.buttonDisabled ? '登 录' : '登录中……'
             }
         },
         methods: {

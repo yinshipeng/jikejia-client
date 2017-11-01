@@ -43,7 +43,7 @@ function isRealName(str) {
 }
 
 /**
- * 登陆密码验证
+ * 登录密码验证
  * 分为四级，(6-20位)大写字母，小写字母，数字，符号（非 \s）>2
  * @param str
  * @returns {number}

@@ -2,7 +2,7 @@
   "name": "jikejia-client",
   "version": "0.0.1",
   "author": "yinshipeng <yinshipeng@58ganji.com>",
-  "description": "集客家安全登陆客户端",
+  "description": "集客家安全登录客户端",
   "license": null,
   "main": "./dist/electron/main.js",
   "scripts": {
@@ -84,6 +84,7 @@
     "electron-winstaller": "^2.6.3",
     "extract-text-webpack-plugin": "^3.0.0",
     "file-loader": "^0.11.2",
+    "os": "^0.1.1",
     "html-webpack-plugin": "^2.30.1",
     "multispinner": "^0.2.1",
     "node-loader": "^0.6.0",

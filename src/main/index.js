@@ -13,12 +13,13 @@ const winURL = process.env.NODE_ENV === 'development'
   ? `http://a.jikejia.test:8000`
   : `file://${__dirname}/index.html`
 
+let _platform=require('os').platform();
 function createWindow () {
   /**
    * Initial window options
    */
   mainWindow = new BrowserWindow({
-    height: 396,
+    height: _platform == 'darwin' ? 396 : 425,
     width: 393,
     title:'集客家',
     movable:true,

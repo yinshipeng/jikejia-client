@@ -1,6 +1,6 @@
 # jikejia-client
 
-> 集客家安全登陆客户端
+> 集客家安全登录客户端
 
 #### Build Setup
 
