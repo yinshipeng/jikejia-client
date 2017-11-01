@@ -20,11 +20,11 @@ function createWindow () {
   mainWindow = new BrowserWindow({
     height: 396,
     width: 393,
-      title:'',
-      movable:true,
-      fullscreenable:false,
-      titleBarStyle:'hidden-inset',
-      resizable: false
+    title:'集客家',
+    movable:true,
+    fullscreenable:false,
+    titleBarStyle:'hidden-inset',
+    resizable: false
   })
 
   mainWindow.loadURL(winURL)

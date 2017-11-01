@@ -14,10 +14,7 @@
     "pack": "npm run pack:main && npm run pack:renderer",
     "pack:main": "cross-env NODE_ENV=production webpack --progress --colors --config .electron-vue/webpack.main.config.js",
     "pack:renderer": "cross-env NODE_ENV=production webpack --progress --colors --config .electron-vue/webpack.renderer.config.js",
-    "postinstall": "",
-    "package-win": "electron-packager . --overwrite --asar=true --platform=win32 --arch=ia32 --icon=./build/icons/jkj.ico --prune=true --out=dist --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=jikejia",
-    "package-win64": "node .electron-vue/build.js && electron-packager ./build --overwrite --asar=true --platform=win32 --arch=x64 --icon=./build/icons/jkj.ico --prune=true --out=build --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=jikejia",
-    "install:win": "node .electron-vue/install-win.js"
+    "postinstall": ""
   },
   "build": {
     "productName": "集客家",
