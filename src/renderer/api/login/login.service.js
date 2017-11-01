@@ -19,6 +19,6 @@ export const queryByCompanyName = function(company_name){
  * @returns {*}
  */
 export const loginServ = function(param){
-    const url = '/franchiseeCompanyLogin'
+    const url = '/grantlogin/gettoken'
     return http.post(url,param)
 }

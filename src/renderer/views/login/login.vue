@@ -2,7 +2,7 @@
     <div class="login">
         <div class="login-form">
             <el-form :model="loginForm" ref="loginForm" :rules="loginFormRules">
-                <el-form-item prop="company_id">
+                <el-form-item prop="companyId">
                     <el-autocomplete
                             v-model="companyName"
                             :props="companySearchProp"
@@ -11,7 +11,7 @@
                             :trigger-on-focus="triggerOnFocus"
                             @select="handleAutoComplete">
                     </el-autocomplete>
-                    <el-input v-model="loginForm.company_id" v-show="1==2"></el-input>
+                    <el-input v-model="loginForm.companyId" v-show="1==2"></el-input>
                 </el-form-item>
                 <el-form-item prop="username">
                     <el-input v-model="loginForm.username" placeholder="请输入用户名"></el-input>
@@ -38,6 +38,7 @@
         data(){
             return {
                 errMessage: '',
+                hostName:'http://10.249.5.4:8912',
                 buttonDisabled: true,
                 companyName: '',
                 triggerOnFocus: false,
@@ -46,12 +47,12 @@
                     label: 'company_name',
                 },
                 loginForm: {
-                    company_id: '',
+                    companyId: '',
                     username: '',
                     password: ''
                 },
                 loginFormRules: {
-                    company_id: [
+                    companyId: [
                         { required: true, message: '请输入公司名称', trigger: 'blur'}
                     ],
                     username: [
@@ -70,7 +71,7 @@
         },
         methods: {
             querySearchAsync(queryString, cb) {
-                this.loginForm.company_id = ''
+                this.loginForm.companyId = ''
                 queryByCompanyName(queryString).then(res => {
                     if(this.$utils.isNotEmpty(res)){
                         var results = queryString ? res.data.filter(this.$utils.createStateFilterProp(queryString, 'company_name')) : res.data;
@@ -79,10 +80,10 @@
                 })
             },
             handleAutoComplete(item){
-                this.loginForm.company_id = item.company_id + ''
+                this.loginForm.companyId = item.company_id + ''
             },
             handleForgetPassword(){
-                open('http://jikejia.cn/enterpriseAccount/toResetPassWord')
+                open(this.hostName + '/enterpriseAccount/toResetPassWord')
             },
             handleSubmit(){
                 if(this.buttonDisabled){
@@ -94,18 +95,21 @@
                                     this.errMessage = '获取设备码失败！'
                                     this.buttonDisabled = true
                                 }else{
-                                    console.log(mac);
+                                    this.loginForm.macAddress = mac
                                     loginServ(this.loginForm).then((res)=>{
-                                        console.log(res)
-                                        // todo 是否可以打开浏览器登陆
-                                        if(true){
-                                            open('http://jikejia.cn?token=111111')
+                                        if(res.status != 200 && res.code != -2){
+                                            throw res
                                         }else{
-                                            this.$router.push({path: '/login-mac/'+mac})
+                                            if(res.code == -2){
+                                                this.$router.push({path: '/login-mac/'+mac})
+                                            }else{
+                                                open(this.hostName + '/grantlogin/testtoken?token='+res.result.token)
+                                                this.buttonDisabled = true
+                                            }
                                         }
                                     }).catch((res) => {
-                                        if(this.$utils.isNotEmpty(res)){
-                                            this.errMessage = '后端错误信息提示！'
+                                        if(this.$utils.isNotEmpty(res) && res.code == -1){
+                                            this.errMessage = '用户名或密码错误！'
                                         }else{
                                             this.errMessage = '系统错误，请联系管理员！'
                                         }

@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/my-electron-vue.iml" filepath="$PROJECT_DIR$/.idea/my-electron-vue.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/jikejia-client.iml" filepath="$PROJECT_DIR$/.idea/jikejia-client.iml" />
     </modules>
   </component>
 </project>

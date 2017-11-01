@@ -4,10 +4,11 @@
 import axios from 'axios'
 
 axios.defaults.withCredentials = true
-axios.defaults.baseURL = 'http://localhost:8080/'
+// axios.defaults.baseURL = 'http://localhost:8080/'
+// axios.defaults.baseURL = 'http://10.249.20.135:8080/'
+axios.defaults.baseURL = 'http://10.249.5.4:8912/'
 
 const respSuccess = function (resp, resolve, reject) {
-    console.log(resp)
     if (resp.status != '200') {
         reject(resp.data)
     } else {
