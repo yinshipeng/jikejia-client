@@ -23,7 +23,6 @@
                     <el-button type="text" class="forget-password" @click="handleForgetPassword">忘记密码</el-button>
                     <el-button type="primary" @click="handleSubmit">{{buttonText}}</el-button>
                 </el-form-item>
-                <input @click="handleSubmit" style="position: absolute;top:-100px;"/>
             </el-form>
         </div>
         <div class="login-footer" v-show="errMessage">
@@ -33,6 +32,7 @@
 </template>
 <script>
     import {queryByCompanyName,loginServ} from '../../api/login/login.service'
+    import { ipcRenderer } from 'electron'
     var open = require("open")
     export default{
         data(){
@@ -67,6 +67,11 @@
         computed: {
             buttonText: function () {
                 return this.buttonDisabled ? '登 录' : '登录中……'
+            }
+        },
+        watch: {
+            '$event.key': function (newVal) {
+                console.log(newVal)
             }
         },
         methods: {
@@ -105,6 +110,8 @@
                                             }else{
                                                 open(this.hostName + '/grantlogin/testtoken?token='+res.result.token)
                                                 this.buttonDisabled = true
+                                                ipcRenderer.send('close-win')
+
                                             }
                                         }
                                     }).catch((res) => {
@@ -121,6 +128,13 @@
                     })
                 }
             }
+        },
+        mounted(){
+            window.addEventListener('keyup',e=>{
+                if(e.keyCode === 13) {
+                    this.handleSubmit()
+                }
+            })
         }
     }
 </script>
