@@ -33,7 +33,7 @@
 <script>
     import {queryByCompanyName,loginServ} from '../../api/login/login.service'
     import { ipcRenderer } from 'electron'
-    var open = require("opn")
+    var opn = require("opn")
     export default{
         data(){
             return {
@@ -69,11 +69,6 @@
                 return this.buttonDisabled ? '登 录' : '登录中……'
             }
         },
-        watch: {
-            '$event.key': function (newVal) {
-                console.log(newVal)
-            }
-        },
         methods: {
             querySearchAsync(queryString, cb) {
                 this.loginForm.companyId = ''
@@ -88,7 +83,7 @@
                 this.loginForm.companyId = item.company_id + ''
             },
             handleForgetPassword(){
-                open(this.hostName + '/enterpriseAccount/toResetPassWord')
+                opn(this.hostName + '/enterpriseAccount/toResetPassWord')
             },
             handleSubmit(){
                 if(this.buttonDisabled){
