@@ -103,10 +103,16 @@
                                             if(res.code == -2){
                                                 this.$router.push({path: '/login-mac/'+mac})
                                             }else{
-                                                opn(this.hostName + '/grantlogin/testtoken?token='+res.result.token)
-                                                setTimeout(function () {
-                                                    ipcRenderer.send('close-win')
-                                                },0)
+                                                if(process.platform === 'darwin'){
+                                                    opn(this.hostName + '/grantlogin/testtoken?token='+res.result.token)
+                                                    setTimeout(function () {
+                                                        ipcRenderer.send('close-win')
+                                                    },0)
+                                                }else{
+                                                    opn(this.hostName + '/grantlogin/testtoken?token='+res.result.token).then(()=>{
+                                                        ipcRenderer.send('close-win')
+                                                    })
+                                                }
                                             }
                                         }
                                     }).catch((res) => {
@@ -125,7 +131,6 @@
             }
         },
         mounted(){
-            console.log(process.platform)
             window.addEventListener('keyup',e=>{
                 if(e.keyCode === 13) {
                     this.handleSubmit()
