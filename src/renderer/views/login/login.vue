@@ -125,6 +125,7 @@
             }
         },
         mounted(){
+            console.log(process.platform)
             window.addEventListener('keyup',e=>{
                 if(e.keyCode === 13) {
                     this.handleSubmit()
