@@ -33,7 +33,7 @@
 <script>
     import {queryByCompanyName,loginServ} from '../../api/login/login.service'
     import { ipcRenderer } from 'electron'
-    var open = require("open")
+    var open = require("opn")
     export default{
         data(){
             return {
