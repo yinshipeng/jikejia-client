@@ -103,9 +103,10 @@
                                             if(res.code == -2){
                                                 this.$router.push({path: '/login-mac/'+mac})
                                             }else{
-                                                opn(this.hostName + '/grantlogin/testtoken?token='+res.result.token).then(()=>{
+                                                opn(this.hostName + '/grantlogin/testtoken?token='+res.result.token)
+                                                setTimeout(function () {
                                                     ipcRenderer.send('close-win')
-                                                })
+                                                },0)
                                             }
                                         }
                                     }).catch((res) => {
