@@ -103,7 +103,7 @@
                                             if(res.code == -2){
                                                 this.$router.push({path: '/login-mac/'+mac})
                                             }else{
-                                                open(this.hostName + '/grantlogin/testtoken?token='+res.result.token)
+                                                opn(this.hostName + '/grantlogin/testtoken?token='+res.result.token)
                                                 this.buttonDisabled = true
                                                 ipcRenderer.send('close-win')
 
