@@ -4,9 +4,7 @@
 import axios from 'axios'
 
 axios.defaults.withCredentials = true
-// axios.defaults.baseURL = 'http://localhost:8080/'
-// axios.defaults.baseURL = 'http://10.249.20.135:8080/'
-axios.defaults.baseURL = 'http://10.249.5.4:8912/'
+axios.defaults.baseURL = 'http://jikejia.cn'
 
 const respSuccess = function (resp, resolve, reject) {
     if (resp.status != '200') {

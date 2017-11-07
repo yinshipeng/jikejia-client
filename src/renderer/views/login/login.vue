@@ -38,7 +38,7 @@
         data(){
             return {
                 errMessage: '',
-                hostName:'http://10.249.5.4:8912',
+                hostName:'http://jikejia.cn',
                 buttonDisabled: true,
                 companyName: '',
                 triggerOnFocus: false,

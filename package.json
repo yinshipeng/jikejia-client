@@ -1,7 +1,7 @@
 {
   "name": "jikejia-client",
   "version": "0.0.1",
-  "author": "yinshipeng <yinshipeng@58ganji.com>",
+  "author": "RuiTing Network Technology（Shanghai）Co.Ltd ",
   "description": "集客家安全登录客户端",
   "license": null,
   "main": "./dist/electron/main.js",
