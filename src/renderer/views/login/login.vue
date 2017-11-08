@@ -43,8 +43,8 @@
                 companyName: '',
                 triggerOnFocus: false,
                 companySearchProp: {
-                    value: 'company_name',
-                    label: 'company_name',
+                    value: 'company_id',
+                    label: 'company_full_name',
                 },
                 loginForm: {
                     companyId: '',
@@ -74,13 +74,22 @@
                 this.loginForm.companyId = ''
                 queryByCompanyName(queryString).then(res => {
                     if(this.$utils.isNotEmpty(res)){
-                        var results = queryString ? res.data.filter(this.$utils.createStateFilterProp(queryString, 'company_name')) : res.data;
+                        let companyArr = []
+                        for(let d of res.data){
+                            companyArr.push({
+                                company_id: d.company_id,
+                                company_full_name: d.company_name + '-' + d.city_name,
+                                company_name: d.company_name
+                            })
+                        }
+                        var results = queryString ? companyArr.filter(this.$utils.createStateFilterProp(queryString, 'company_full_name')) : companyArr;
                         cb(results)
                     }
                 })
             },
             handleAutoComplete(item){
                 this.loginForm.companyId = item.company_id + ''
+                this.companyName = item.company_name
             },
             handleForgetPassword(){
                 opn(this.hostName + '/enterpriseAccount/toResetPassWord')
